@@ -1,6 +1,7 @@
 # README 
 
-Ce dossier contient deux sous-dossiers, l'un 3services, qui contient les sources et documentations des applications créés, l'autre, yocto_src qui contient le layer créé ainsi que la configuration du build.
+Les dossiers sensor_stats, sensor_simu et sensor_alert sont les dossiers sources de trois applications Qt5 en C++.
+Dans chacun des dossiers, se trouve un sous dossier docxigen_doc avec une documentation plus détaillée sur le fonctionnement, l'installation et le déploiement de ces application.
 
 
 ## yocto_src
