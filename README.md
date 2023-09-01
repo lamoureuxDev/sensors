@@ -1,7 +1,7 @@
 # README 
 
 Les dossiers sensor_stats, sensor_simu et sensor_alert sont les dossiers sources de trois applications Qt5 en C++.
-Dans chacun des dossiers, se trouve un sous dossier docxigen_doc avec une documentation plus détaillée sur le fonctionnement, l'installation et le déploiement de ces application.
+Dans chacun des dossiers, se trouve un sous dossier doxygen_doc avec une documentation plus détaillée sur le fonctionnement, l'installation et le déploiement de ces application.
 
 
 ## yocto_src
