@@ -1,0 +1,125 @@
+\doxysection{Main\+Window Class Reference}
+\label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+A \doxyref{Main\+Window}{p.}{class_main_window} class to simulate sensors data.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Main\+Window} (QWidget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Set the ui, timer and a lambda slot to display sensors stats every second Everytime the timer\+::timeout signal is emitted, a random value is setted in the shared memoryand displayed the UI. \end{DoxyCompactList}\item 
+\textbf{ $\sim$\+Main\+Window} ()
+\item 
+void \textbf{ set\+\_\+temp} (float f32\+\_\+temp)
+\begin{DoxyCompactList}\small\item\em set the temperature value in the UI \end{DoxyCompactList}\item 
+\label{class_main_window_ae4f5c821794f3edf7f343f96a9191a6c} 
+void {\bfseries set\+\_\+humidity} (float f32\+\_\+hum)
+\item 
+void \textbf{ set\+\_\+light} (float f32\+\_\+light)
+\begin{DoxyCompactList}\small\item\em set the light value in the UI \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_main_window_a0bdf0e65d4199297ed7c55f9879c1e64} 
+\textbf{ Common} {\bfseries sensors}
+\begin{DoxyCompactList}\small\item\em Brief private member used to write sensors data. \end{DoxyCompactList}\item 
+\label{class_main_window_a356578805ed1248a7f2807434cb0e5ee} 
+QTimer $\ast$ {\bfseries timer}
+\begin{DoxyCompactList}\small\item\em Brief private timer to simulate every second sensors data. \end{DoxyCompactList}\item 
+\label{class_main_window_a35466a70ed47252a0191168126a352a5} 
+Ui\+::\+Main\+Window $\ast$ {\bfseries ui}
+\begin{DoxyCompactList}\small\item\em Brief Ui class to display sensor values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxyref{Main\+Window}{p.}{class_main_window} class to simulate sensors data. 
+
+Set temperature, humidity and light value in a shared memory 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\label{class_main_window_a996c5a2b6f77944776856f08ec30858d} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Set the ui, timer and a lambda slot to display sensors stats every second Everytime the timer\+::timeout signal is emitted, a random value is setted in the shared memoryand displayed the UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+Create and get an access to the shmem
+
+\begin{DoxyRefDesc}{Todo}
+\item[\textbf{ Todo}]Use the sensors settings to know how many sensors are available and to set the range value too \end{DoxyRefDesc}
+
+
+Define a random humidity value in [0.\+0 -\/ 100]
+
+Define a random light value in [0.\+0 -\/ 100]
+
+Define a random temperature value in [-\/10 -\/ 40]
+
+Write random values to the shared memory
+
+Display the sensors values\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{$\sim$MainWindow}}
+\index{````~MainWindow@{$\sim$MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{$\sim$MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Main\+Window}{p.}{class_main_window} destructor destroy the ui member 
+
+\doxysubsection{Member Function Documentation}
+\label{class_main_window_a65e3cc0d4d69dea5cf0b9206250b46a9} 
+\index{MainWindow@{MainWindow}!set\_light@{set\_light}}
+\index{set\_light@{set\_light}!MainWindow@{MainWindow}}
+\doxysubsubsection{set\_light()}
+{\footnotesize\ttfamily Main\+Window\+::set\+\_\+light (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+light }\end{DoxyParamCaption})}
+
+
+
+set the light value in the UI 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+light} & current sensor value \\
+\hline
+\end{DoxyParams}
+\label{class_main_window_a820798bdb687c7defb3b1ca78a45eb45} 
+\index{MainWindow@{MainWindow}!set\_temp@{set\_temp}}
+\index{set\_temp@{set\_temp}!MainWindow@{MainWindow}}
+\doxysubsubsection{set\_temp()}
+{\footnotesize\ttfamily Main\+Window\+::set\+\_\+temp (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+temp }\end{DoxyParamCaption})}
+
+
+
+set the temperature value in the UI 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+temp} & current sensor value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ mainwindow.\+h}\item 
+\textbf{ mainwindow.\+cpp}\end{DoxyCompactItemize}

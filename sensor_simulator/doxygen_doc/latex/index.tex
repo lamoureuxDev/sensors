@@ -1,0 +1,278 @@
+\chapter{README}
+\label{index}\index{README@{README}}
+
+\begin{DoxyItemize}
+\item Description
+\item Installation
+\item Deployment
+\begin{DoxyItemize}
+\item Linux deployment
+\item Yocto deployment
+\end{DoxyItemize}
+\end{DoxyItemize}\doxysection{Description}\label{index_sec}
+The Sensor Simulator program is a UI, designed to set random sensors values in a shared memory. Values are setted every second by default with a different fixed range for each type of sensor.
+
+This program is intended to simulate real sensors, sending data. Use it only for testing purpose, alongside a sensor\+\_\+alert and/or a sensor\+\_\+stat to read simulated values.
+
+A shared memory is used to communicate between processes and share sensors data. Sensor\+\_\+simulator use the shared memory only in writting mode.
+
+Please do not run this program yourself, instead use systemd services with the attached script.\doxysection{Installation}\label{index_Installation}
+This software is based on Qt library and C++17. To install Qt and C++ compilator, please run the following commands on linux\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ sudo\ apt-\/get\ install\ build-\/essential}
+\DoxyCodeLine{\$\ sudo\ apt-\/get\ install\ qtbase5-\/dev}
+
+\end{DoxyCode}
+
+
+To run the program, please change your current directory to the build path. Then, compile the program with qmake and make as follow\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ cd\ /build\_path}
+\DoxyCodeLine{\$\ qmake}
+\DoxyCodeLine{\$\ make}
+\DoxyCodeLine{\$\ ./sensor\_simulator}
+
+\end{DoxyCode}
+\doxysection{Deployment}\label{index_Deployment}
+\doxysubsection{Linux}\label{index_Linux}
+Follow these steps to deploy the sensor\+\_\+stats on your Linux system\+:
+\begin{DoxyItemize}
+\item install prerequisites
+\item build the app
+\item move the execution file to "{}/usr/bin/"{}
+\item move the sensors\+\_\+script.\+sh file to "{}/usr/bin/"{}
+\item add execution right on the script and execution file
+\item create a Unit file on /lib/systemd/system/mysensors.service
+\item add execution right on the Unit file
+\item start the service and check that is running
+\item stop it, then enable it to start on boot.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ sudo\ apt-\/get\ install\ build-\/essential}
+\DoxyCodeLine{\$\ sudo\ apt-\/get\ install\ qtbase5-\/dev}
+\DoxyCodeLine{\$\ sudo\ cp\ sensor\_stat\ /usr/bin}
+\DoxyCodeLine{\$\ sudo\ mv\ sensors\_script.sh\ /usr/bin}
+\DoxyCodeLine{\$\ sudo\ chmod\ +x\ /usr/bin/sensors\_script.sh}
+\DoxyCodeLine{\$\ sudo\ chmod\ +x\ /usr/bin/sensor\_simulator}
+\DoxyCodeLine{\$\ sudo\ gedit\ /lib/systemd/system/mysensors.service}
+\DoxyCodeLine{\ \ \ \ [Unit]}
+\DoxyCodeLine{\ \ \ \ \ Description=\ My\ sensors\ service\ running\ /usr/bin/sensors\_script.sh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ [Service]}
+\DoxyCodeLine{\ \ \ \ \ Type=simple}
+\DoxyCodeLine{\ \ \ \ \ ExecStart=/bin/bash\ /usr/bin/sensors\_script.sh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ [Install]}
+\DoxyCodeLine{\ \ \ \ \ WantedBy=multi-\/user.target}
+\DoxyCodeLine{}
+\DoxyCodeLine{\$\ sudo\ cp\ /lib/systemd/system/mysensors.service\ /etc/systemd/system/}
+\DoxyCodeLine{\$\ sudo\ chmod\ 644\ /etc/systemd/system/mysensors.service/}
+\DoxyCodeLine{\$\ sudo\ systemctl\ start\ mysensors}
+\DoxyCodeLine{\$\ sudo\ systemctl\ stop\ mysensors}
+\DoxyCodeLine{\$\ sudo\ systemctl\ enable\ mysensors}
+
+\end{DoxyCode}
+
+
+Following theses steps, sensor\+\_\+simulator program will run automaticaly on boot, along side the sensor\+\_\+stat and sensor\+\_\+alerts, with the sensor\+\_\+simulator launched fisrt.\doxysubsection{Yocto}\label{index_Yocto}
+Using yocto to build an image and add our services.
+
+First of all, be sure to have prerequisites for yocto\+:
+\begin{DoxyItemize}
+\item A linux OS ( Docker, WSL, linux distro partition ..)
+\item 100 Gb minimum free space on host disk
+\item a good computer ( RAM $>$ 16 Go, \#\+CPU $>$ 16) or a lot of time
+\item IT network simple and reliable ( no proxy, intrusive firewall, stable connection)
+\item a host updated
+\end{DoxyItemize}
+
+Fist of all, we will need to download yocto project 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ sudo\ apt-\/get\ install\ gawk\ wget\ git-\/core\ diffstat\ unzip\ texinfo\ gcc-\/multilib\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ build-\/essential\ chrpath\ socat\ libsdl1.2-\/dev\ xterm}
+\DoxyCodeLine{\$\ sudo\ apt\ update}
+\DoxyCodeLine{\$sudo\ apt\ autoremove}
+
+\end{DoxyCode}
+
+
+When all tools are installed, we can create our environement, creating a folder to download the Yocto Project and checkout the last version, {\ttfamily mickledore}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ mkdir\ yocto}
+\DoxyCodeLine{\$\ cd\ yocto}
+\DoxyCodeLine{\$\ git\ clone\ http:\textcolor{comment}{//git.yoctoproject.org/git/poky}}
+\DoxyCodeLine{\$\ cd\ poky}
+\DoxyCodeLine{\$\ git\ checkout\ -\/b\ mickledore\ origin/mickledore}
+
+\end{DoxyCode}
+
+
+Here, we will want to build layers, and we will need bitbake tools and others. To get an easy access to them, we will load a special environnement from de open embedded project
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{poky\$\ source\ oe-\/init-\/build-\/env}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\#\#\ Shell\ environment\ set\ up\ for\ builds.\ \#\#\#}}
+\DoxyCodeLine{}
+\DoxyCodeLine{You\ can\ now\ run\ \textcolor{stringliteral}{'bitbake\ <target>'}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Common\ targets\ are:}
+\DoxyCodeLine{\ \ \ \ core-\/image-\/minimal}
+\DoxyCodeLine{\ \ \ \ core-\/image-\/full-\/cmdline}
+\DoxyCodeLine{\ \ \ \ core-\/image-\/sato}
+\DoxyCodeLine{\ \ \ \ core-\/image-\/weston}
+\DoxyCodeLine{\ \ \ \ meta-\/toolchain}
+\DoxyCodeLine{\ \ \ \ meta-\/ide-\/support}
+\DoxyCodeLine{}
+\DoxyCodeLine{Other\ commonly\ useful\ commands\ are:}
+\DoxyCodeLine{\ -\/\ \textcolor{stringliteral}{'devtool'}\ and\ \textcolor{stringliteral}{'recipetool'}\ handle\ common\ recipe\ tasks}
+\DoxyCodeLine{\ -\/\ \textcolor{stringliteral}{'bitbake-\/layers'}\ handles\ common\ layer\ tasks}
+\DoxyCodeLine{\ -\/\ \textcolor{stringliteral}{'oe-\/pkgdata-\/util'}\ handles\ common\ target\ \textcolor{keyword}{package\ }tasks}
+
+\end{DoxyCode}
+
+
+Without any option, this will create a build directory in yocto, and change our current \$\+PWD to poky/build. If we list directories in \$poky/, we find many meta-\/\+XX folders, they are layers. In every layer, we find one or more recipes. A recipe is a bitbake file ($\ast$.bb), wich configure the build process, commands to execute when building the recipe.
+
+Like in the Linux deployment, we will need to install dependencies first of all, before compiling our recipe. To know our depedencies, we have to check {\texttt{ https\+://layers.\+openembedded.\+org}}. For meta-\/qt5, we can see {\texttt{ https\+://github.\+com/meta-\/qt5/meta-\/qt5.\+git}}
+
+to add it, we need to download it, then add the layer to our bblayer 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{poky\$\ git\ clone\ https:\textcolor{comment}{//github.com/meta-\/qt5/meta-\/qt5.git}}
+\DoxyCodeLine{poky\$\ bitbake-\/layers\ add-\/layerr\ meta-\/qt5}
+\DoxyCodeLine{poky\$\ bitbake-\/layers\ show-\/layers}
+\DoxyCodeLine{layer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priority}
+\DoxyCodeLine{========================================================================================================}
+\DoxyCodeLine{}
+\DoxyCodeLine{qt5-\/layer\ \ \ \ \ \ \ \ \ \ \ \ \ /home/lamoureux/yoctoiot/layers/poky/meta-\/qt5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 7}
+
+\end{DoxyCode}
+
+
+we will try step by step to build an image with new layers, see how qt5 layers are built to build our layer
+
+Today, I dont get yet a layer with every depedencies installed, to build my layer without any error using Qt5, but I can compile C++ code, and have my code working but only in console, or loggin in files. Anyway, together and with more than three days on it we will find every layers needed. In order to run my qt application, we could use a pre cross compilation for the target, then copy the binary file in \$\{bindir\}
+
+To populate our recipe for sensor-\/stats, we will import our source files in our recipe to get this architecture\+: (assuming that \$\+BUILD\+\_\+\+SENSOR\+\_\+\+SIMU= /path/to/sensor\+\_\+stats\+\_\+sources)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{../poky/buils\$\ bitbake-\/layers\ create-\/layer\ ../meta-\/sensors}
+\DoxyCodeLine{../poky/buils\$\ cd\ ../meta-\/sensors}
+\DoxyCodeLine{../poky/meta-\/sensors\$\ mv\ recipes-\/example\ recipes-\/sensor-\/simu}
+\DoxyCodeLine{../poky/meta-\/sensors\$\ mkdir\ recipes-\/sensor-\/simu/sensor-\/simu}
+\DoxyCodeLine{../poky/meta-\/sensors\$\ mkdir\ recipes-\/sensor-\/simu/sensor-\/simu/files}
+\DoxyCodeLine{../poky/meta-\/sensors\$\ cp\ \$BUILD\_SENSOR\_SIMU\textcolor{comment}{/*.*\ recipes-\/sensor-\/stats/sensor-\/simu/files/}}
+\DoxyCodeLine{\textcolor{comment}{...poky/meta-\/sensors\$\ tree\ recipes-\/sensor-\/simu/\ -\/L\ 3}}
+\DoxyCodeLine{\textcolor{comment}{recipes-\/sensor-\/simu/}}
+\DoxyCodeLine{\textcolor{comment}{└──\ sensor-\/simu}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ├──\ files}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ README.h}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ TODO.h}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ common.cpp}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ common.h}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ main.cpp}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ mainwindow.cpp}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ mainwindow.h}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ mainwindow.ui}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ │\ \ \ ├──\ sensor\_simu.pro}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ └──\ sensor-\/stats\_0.1.bb}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{2\ directories,\ 14\ files}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{../poky/buils\$\ bitbake-\/layers\ add-\/layer\ ../meta-\/sensors}}
+
+\end{DoxyCode}
+
+
+We will edit our recipe sensor-\/stats\+\_\+0.\+1.\+bb as follow \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{SUMMARY\ =\ \textcolor{stringliteral}{"{}My\ Sensor\ Simu\ application"{}}}
+\DoxyCodeLine{LICENSE\ =\ \textcolor{stringliteral}{"{}CLOSED"{}}}
+\DoxyCodeLine{PR\ =\ \textcolor{stringliteral}{"{}1"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{SRC\_URI\ =\ \textcolor{stringliteral}{"{}file://common.cpp\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://common.h\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://main.cpp\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://mainwindow.ui\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://mainwindow.cpp\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://mainwindow.h\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ file://sensor\_simu.pro\ \(\backslash\)"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{S\ =\ "{}}\$\{WORKDIR\}\textcolor{stringliteral}{"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{require\ recipes-\/qt/qt5/qt5.inc}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{DEPENDS\ +=\ "{}}qtbase\textcolor{stringliteral}{"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{inherit\ qmake5}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{\#COMPILE\ MYIN\ THE\ DATADIR\ OF\ THE\ IMAGE,}}
+\DoxyCodeLine{\textcolor{stringliteral}{do\_install()\ \{}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ install\ -\/d\ \$\{D\}\$\{datadir\}/\$\{P\}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ install\ -\/m\ 0755\ \$\{S\}/sensor-\/stats\ \$\{D\}\$\{datadir\}/\$\{P\}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\ \ \ \ cp\ -\/R\ -\/-\/no-\/dereference\ -\/-\/preserve=mode,links\ \$\{S\}\ \$\{D\}\$\{datadir\}/\$\{P\}}}
+\DoxyCodeLine{\textcolor{stringliteral}{\}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{FILES\_\$\{PN\}\ +=\ "{}}\$\{datadir\}\textcolor{stringliteral}{"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{}}
+\DoxyCodeLine{\textcolor{stringliteral}{RDEPENDS\_\$\{PN\}\ =\ "{}}qtbase\ qtcore\textcolor{stringliteral}{"{}}}
+
+\end{DoxyCode}
+
+
+For the other recipes, we will follow the same process, to obtain the following architecture
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{...poky\$\ tree\ meta-\/sensors/\ -\/L\ 4}
+\DoxyCodeLine{meta-\/sensors/}
+\DoxyCodeLine{├──\ COPYING.MIT}
+\DoxyCodeLine{├──\ README}
+\DoxyCodeLine{├──\ conf}
+\DoxyCodeLine{│\ \ \ └──\ layer.conf}
+\DoxyCodeLine{├──\ recipes-\/sensor-\/alerts}
+\DoxyCodeLine{│\ \ \ └──\ sensor-\/alerts}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ files}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ sensor-\/alerts\_0.1.bb}
+\DoxyCodeLine{├──\ recipes-\/sensor-\/simu}
+\DoxyCodeLine{│\ \ \ └──\ sensor-\/simu}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ sensor-\/simu\_0.1.bb}
+\DoxyCodeLine{└──\ recipes-\/sensor-\/stats}
+\DoxyCodeLine{\ \ \ \ └──\ sensor-\/stats}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ └──\ sensor-\/stats\_0.1.bb}
+
+\end{DoxyCode}
+
+
+In our build local.\+conf, we will need to add some options in order to build images. But still trying to find the correct conf honestly, for now I have add this settings and have Qt5everywheredemo running, but using cmake to compile and using QML instead of ui
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\#services\ systemd}}
+\DoxyCodeLine{}
+\DoxyCodeLine{DISTRO\_FEATURES:append\ =\ \textcolor{stringliteral}{"{}\ systemd"{}}}
+\DoxyCodeLine{DISTRO\_FEATURES:BACKFILL\_CONSIDERED\ +=\ \textcolor{stringliteral}{"{}sysvinit"{}}}
+\DoxyCodeLine{VIRTUAL-\/RUNTIME:init\_manager\ =\ \textcolor{stringliteral}{"{}systemd"{}}}
+\DoxyCodeLine{VIRTUAL-\/RUNTIME:initscripts\ =\ \textcolor{stringliteral}{"{}systemd-\/compat-\/units"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\#Default\ distro}}
+\DoxyCodeLine{DISTRO\ ?=\ \textcolor{stringliteral}{"{}poky"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\#\ Trying\ to\ compile\ on\ host\ if\ possible\ }}
+\DoxyCodeLine{IMAGE\_FEATURES\ +=\ \textcolor{stringliteral}{"{}\ tools-\/sdk\ tools-\/debug\ eclipse-\/debug\ dev-\/pkgs\ "{}}}
+\DoxyCodeLine{EXTRA\_IMAGE\_FEATURES\ ?=\ \textcolor{stringliteral}{"{}debug-\/tweaks\ tools-\/sdk\ dev-\/pkgs"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\#\ Adding\ Qt\ lib,\ projects,\ and\ qt5everywhere\ runs\ on\ target,\ but\ it\ uses\ QML,\ not\ ui}}
+\DoxyCodeLine{IMAGE\_INSTALL:append\ =\ \textcolor{stringliteral}{"{}\ nano\ qtbase\ qtbase-\/tools\ qtdeclarative\ qt5everywheredemo"{}}}
+\DoxyCodeLine{DISTRO\_FEATURES:append\ =\ \textcolor{stringliteral}{"{}\ qt5"{}}}
+\DoxyCodeLine{PACKAGECONFIG:append\_pn-\/qtbase\ =\ \textcolor{stringliteral}{"{}\ icu"{}}}
+\DoxyCodeLine{PACKAGECONFIG:append:pn-\/qemu-\/system-\/native\ =\ \textcolor{stringliteral}{"{}\ gtk+"{}}}
+
+\end{DoxyCode}
+ 

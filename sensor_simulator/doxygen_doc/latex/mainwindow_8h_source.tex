@@ -1,0 +1,39 @@
+\doxysection{mainwindow.\+h}
+\label{mainwindow_8h_source}\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <common.h>}}
+\DoxyCodeLine{00014\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }MainWindow;\ \}}
+\DoxyCodeLine{00016\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }MainWindow\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ Common\ sensors;}
+\DoxyCodeLine{00029\ \ \ \ \ QTimer\ *timer;\ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ MainWindow(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \string~MainWindow();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_temp(\textcolor{keywordtype}{float}\ f32\_temp);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_humidity(\textcolor{keywordtype}{float}\ f32\_hum);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_light(\textcolor{keywordtype}{float}\ f32\_light);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00072\ \ \ \ \ Ui::MainWindow\ *ui;\ \ \ }
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

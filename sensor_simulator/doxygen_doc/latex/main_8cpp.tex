@@ -1,0 +1,46 @@
+\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Main file which loads the graphic interface.  
+
+
+{\ttfamily \#include "{}mainwindow.\+h"{}}\newline
+{\ttfamily \#include $<$QApplication$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\label{main_8cpp_a1c6d5de492ac61ad29aec7aa9a436bbf} 
+\#define {\bfseries VERSION}~"{}V0.\+0.\+1"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main file which loads the graphic interface. 
+
+\begin{DoxyAuthor}{Author}
+Lamoureux Développement 
+\end{DoxyAuthor}
+Execute the UI which simulate sensor data, send it to a shared memory and display the current value 
+
+\doxysubsection{Function Documentation}
+\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\textbf{ Todo}]Use argv to run using options no graphic , version, ... \end{DoxyRefDesc}
+
+
+$<$ Declare to Qt that it is an application
+
+$<$ Declare the main window
+
+$<$ Run the application and return when closed
