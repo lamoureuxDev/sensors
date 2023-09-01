@@ -1,0 +1,199 @@
+\doxysection{Common Class Reference}
+\label{class_common}\index{Common@{Common}}
+
+
+A \doxyref{Common}{p.}{class_common} class to access the sensor shared memory.  
+
+
+
+
+{\ttfamily \#include $<$common.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Common} (void)
+\item 
+\textbf{ $\sim$\+Common} ()
+\item 
+unsigned int \textbf{ get\+\_\+timeout} (void) const
+\item 
+void \textbf{ free\+\_\+shmem} (void)
+\item 
+void \textbf{ create\+\_\+shmem} (void)
+\begin{DoxyCompactList}\small\item\em \doxyref{Common\+::create\+\_\+shmem()}{p.}{class_common_a7a7b248e38ae01e3250c2c6df02f0bfb} \end{DoxyCompactList}\item 
+void \textbf{ get\+\_\+shmem} (void)
+\begin{DoxyCompactList}\small\item\em \doxyref{Common\+::get\+\_\+shmem()}{p.}{class_common_ad14ba814924d743527fa24616888d6cf} \end{DoxyCompactList}\item 
+void \textbf{ set\+\_\+light} (float f32\+\_\+val)
+\item 
+void \textbf{ set\+\_\+humidity} (float f32\+\_\+val)
+\item 
+void \textbf{ set\+\_\+temperature} (float f32\+\_\+val)
+\item 
+float \textbf{ get\+\_\+light} () const
+\item 
+float \textbf{ get\+\_\+temperature} () const
+\item 
+float \textbf{ get\+\_\+humidity} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ read\+\_\+conf} (void)
+\begin{DoxyCompactList}\small\item\em read a conf file to set the shmem settings \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_common_ad5bb16e9f3269f0595f043b7eb35c7ad} 
+int {\bfseries shm\+Id}
+\begin{DoxyCompactList}\small\item\em Brief Private share memory ID \+: shm\+Id. \end{DoxyCompactList}\item 
+\label{class_common_acc3cb0f300b651723bd4f1a904e3772f} 
+\textbf{ st\+\_\+sensors} $\ast$ {\bfseries sensors}
+\begin{DoxyCompactList}\small\item\em Brief private pointer to a structure \doxyref{st\+\_\+sensors}{p.}{structst__sensors}. \end{DoxyCompactList}\item 
+\label{class_common_a1b83aea18f2b791f87fbf538936a2afb} 
+unsigned int {\bfseries u32\+\_\+timeout} \{1000\}
+\begin{DoxyCompactList}\small\item\em Brief waiting time in millisecond before accessing the shmem, 1 second by default. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxyref{Common}{p.}{class_common} class to access the sensor shared memory. 
+
+getters et setters to sensors value. Create, get and free access to the shared memory 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\label{class_common_a238749d318a2208574129c4aa5477cda} 
+\index{Common@{Common}!Common@{Common}}
+\index{Common@{Common}!Common@{Common}}
+\doxysubsubsection{Common()}
+{\footnotesize\ttfamily Common\+::\+Common (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\doxyref{Common}{p.}{class_common} constructor. \label{class_common_aed37ca095e4f037f3f4f2acce1c3e057} 
+\index{Common@{Common}!````~Common@{$\sim$Common}}
+\index{````~Common@{$\sim$Common}!Common@{Common}}
+\doxysubsubsection{$\sim$Common()}
+{\footnotesize\ttfamily Common\+::$\sim$\+Common (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Common}{p.}{class_common} destructor free the access to the shared memory 
+
+\doxysubsection{Member Function Documentation}
+\label{class_common_a7a7b248e38ae01e3250c2c6df02f0bfb} 
+\index{Common@{Common}!create\_shmem@{create\_shmem}}
+\index{create\_shmem@{create\_shmem}!Common@{Common}}
+\doxysubsubsection{create\_shmem()}
+{\footnotesize\ttfamily void Common\+::create\+\_\+shmem (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Common\+::create\+\_\+shmem()}{p.}{class_common_a7a7b248e38ae01e3250c2c6df02f0bfb} 
+
+Get a key to the shmem path Get the shm\+Id the shared memory and create the shared memory if does not exists Attach the sensors member to the shmem
+
+create the access to the shared memory Attach sensors to the shared memory \label{class_common_af5dcaa2110c5293be2167e83675e817b} 
+\index{Common@{Common}!free\_shmem@{free\_shmem}}
+\index{free\_shmem@{free\_shmem}!Common@{Common}}
+\doxysubsubsection{free\_shmem()}
+{\footnotesize\ttfamily Common\+::free\+\_\+shmem (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+free the access to the shared memory
+
+sensors is detached from the shared memory \label{class_common_a963465a9e3fa485c6c1eabae33224604} 
+\index{Common@{Common}!get\_humidity@{get\_humidity}}
+\index{get\_humidity@{get\_humidity}!Common@{Common}}
+\doxysubsubsection{get\_humidity()}
+{\footnotesize\ttfamily float Common\+::get\+\_\+humidity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+getter to the humidity value in the shared memory \begin{DoxyReturn}{Returns}
+float humidity value 
+\end{DoxyReturn}
+\label{class_common_ad1a3a0ddfd3ee3e4ec04c83ded3668ae} 
+\index{Common@{Common}!get\_light@{get\_light}}
+\index{get\_light@{get\_light}!Common@{Common}}
+\doxysubsubsection{get\_light()}
+{\footnotesize\ttfamily float Common\+::get\+\_\+light (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+getter to the light value in the shared memory \begin{DoxyReturn}{Returns}
+float light value 
+\end{DoxyReturn}
+\label{class_common_ad14ba814924d743527fa24616888d6cf} 
+\index{Common@{Common}!get\_shmem@{get\_shmem}}
+\index{get\_shmem@{get\_shmem}!Common@{Common}}
+\doxysubsubsection{get\_shmem()}
+{\footnotesize\ttfamily void Common\+::get\+\_\+shmem (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Common\+::get\+\_\+shmem()}{p.}{class_common_ad14ba814924d743527fa24616888d6cf} 
+
+Get a key to the shmem path Get the shm\+Id the shared memory Attach the sensors member to the shmem
+
+get the access to the shared memory Attach sensors to the shared memory \label{class_common_add61aeb0e6e46cfcee2c96d054da766c} 
+\index{Common@{Common}!get\_temperature@{get\_temperature}}
+\index{get\_temperature@{get\_temperature}!Common@{Common}}
+\doxysubsubsection{get\_temperature()}
+{\footnotesize\ttfamily float Common\+::get\+\_\+temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+getter to the temperature value in the shared memory \begin{DoxyReturn}{Returns}
+float temperature value 
+\end{DoxyReturn}
+\label{class_common_adef0ec6699119368ace22ae8fc290787} 
+\index{Common@{Common}!get\_timeout@{get\_timeout}}
+\index{get\_timeout@{get\_timeout}!Common@{Common}}
+\doxysubsubsection{get\_timeout()}
+{\footnotesize\ttfamily Common\+::get\+\_\+timeout (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+get the timemout value in milliseconds
+
+\begin{DoxyReturn}{Returns}
+the timeout value by default, or read in the conf file 
+\end{DoxyReturn}
+\label{class_common_a6ddb86eb87f5a7a1e15c4fbc24afd14e} 
+\index{Common@{Common}!read\_conf@{read\_conf}}
+\index{read\_conf@{read\_conf}!Common@{Common}}
+\doxysubsubsection{read\_conf()}
+{\footnotesize\ttfamily void Common\+::read\+\_\+conf (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+read a conf file to set the shmem settings 
+
+Settings\+: Number of sensors, timeout access, shmem to access \begin{DoxyRefDesc}{Todo}
+\item[\textbf{ Todo}]Read a conf file if file.\+exists() \{ [timeout] -\/$>$ u32\+\_\+timeout = val(); [shmem\+\_\+paths] -\/$>$ /dev/shmem/sensors/temperature -\/$>$ /dev/shmem/sensors/light \} \end{DoxyRefDesc}
+\label{class_common_afabdf6d7c331e3c34c151a6e441a7ad0} 
+\index{Common@{Common}!set\_humidity@{set\_humidity}}
+\index{set\_humidity@{set\_humidity}!Common@{Common}}
+\doxysubsubsection{set\_humidity()}
+{\footnotesize\ttfamily void Common\+::set\+\_\+humidity (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})}
+
+setter to the humidity value in the shared memory 
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+val} & humidity value \\
+\hline
+\end{DoxyParams}
+\label{class_common_a3a747c32718aba055da3082e8a963513} 
+\index{Common@{Common}!set\_light@{set\_light}}
+\index{set\_light@{set\_light}!Common@{Common}}
+\doxysubsubsection{set\_light()}
+{\footnotesize\ttfamily void Common\+::set\+\_\+light (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})}
+
+setter to the light value in the shared memory 
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+val} & light value \\
+\hline
+\end{DoxyParams}
+\label{class_common_a118a0b3e8f3f14ded9893d81667af844} 
+\index{Common@{Common}!set\_temperature@{set\_temperature}}
+\index{set\_temperature@{set\_temperature}!Common@{Common}}
+\doxysubsubsection{set\_temperature()}
+{\footnotesize\ttfamily void Common\+::set\+\_\+temperature (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})}
+
+setter to the temperature value in the shared memory 
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+val} & temperature value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ common.\+h}\item 
+\textbf{ common.\+cpp}\end{DoxyCompactItemize}

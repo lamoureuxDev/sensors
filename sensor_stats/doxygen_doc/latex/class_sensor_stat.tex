@@ -1,0 +1,205 @@
+\doxysection{Sensor\+Stat Class Reference}
+\label{class_sensor_stat}\index{SensorStat@{SensorStat}}
+
+
+A \doxyref{Sensor\+Stat}{p.}{class_sensor_stat} class to compute and display a sensor statistic.  
+
+
+
+
+{\ttfamily \#include $<$sensorstat.\+h$>$}
+
+Inheritance diagram for Sensor\+Stat\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sensor_stat}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Sensor\+Stat} (QWidget $\ast$parent=nullptr, std\+::string name="{}Sensor"{})
+\item 
+\textbf{ $\sim$\+Sensor\+Stat} ()
+\item 
+void \textbf{ new\+\_\+val} (float f32\+\_\+val)
+\begin{DoxyCompactList}\small\item\em set the current sensor value \end{DoxyCompactList}\item 
+float \textbf{ get\+\_\+avg} () const
+\item 
+float \textbf{ get\+\_\+max} () const
+\item 
+float \textbf{ get\+\_\+min} () const
+\item 
+void \textbf{ set\+\_\+title} (std\+::string name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ set\+\_\+avg} (void)
+\item 
+void \textbf{ set\+\_\+max} (float f32\+\_\+val)
+\item 
+void \textbf{ set\+\_\+min} (float f32\+\_\+val)
+\item 
+void \textbf{ display\+\_\+stats} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \textbf{ u32\+\_\+cpt} \{0\}
+\begin{DoxyCompactList}\small\item\em Brief private counter value for average value. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_a16602dd8881c6c1ee8e4e00d85b67e86} 
+float {\bfseries f32\+\_\+sum} \{0\}
+\begin{DoxyCompactList}\small\item\em Brief private sum value for average value. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_ad08e84ea58e9b712ade6386a8739717f} 
+float {\bfseries f32\+\_\+min} \{10000\}
+\begin{DoxyCompactList}\small\item\em Brief private minimum value. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_a24516e0273b48bb87117253c47ee443c} 
+float {\bfseries f32\+\_\+max} \{-\/1000\}
+\begin{DoxyCompactList}\small\item\em Brief private maximum value. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_a5ac4a41eaa37f3adb9209311e64fe8e2} 
+float {\bfseries f32\+\_\+avg} \{0\}
+\begin{DoxyCompactList}\small\item\em Brief private average value. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_a82b4eb63dd58c2bccb872d5097e47c8c} 
+std\+::string {\bfseries str\+\_\+name}
+\begin{DoxyCompactList}\small\item\em Brief private sensor name. \end{DoxyCompactList}\item 
+\label{class_sensor_stat_a1536ed9551c7f412dc1f36e17c32523c} 
+Ui\+::\+Sensor\+Stat $\ast$ {\bfseries ui}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxyref{Sensor\+Stat}{p.}{class_sensor_stat} class to compute and display a sensor statistic. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\label{class_sensor_stat_adc94cd39f17a9b761ca0c4ae2c9295d7} 
+\index{SensorStat@{SensorStat}!SensorStat@{SensorStat}}
+\index{SensorStat@{SensorStat}!SensorStat@{SensorStat}}
+\doxysubsubsection{SensorStat()}
+{\footnotesize\ttfamily Sensor\+Stat\+::\+Sensor\+Stat (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr},  }\item[{std\+::string}]{name = {\ttfamily "{}Sensor"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\doxyref{Sensor\+Stat}{p.}{class_sensor_stat} constructor 
+\begin{DoxyParams}{Parameters}
+{\em parent} & \+: object parent \\
+\hline
+{\em name} & \+: sensor name \\
+\hline
+\end{DoxyParams}
+\label{class_sensor_stat_a7dddd7c766c627fca5e505662f4dbb0c} 
+\index{SensorStat@{SensorStat}!````~SensorStat@{$\sim$SensorStat}}
+\index{````~SensorStat@{$\sim$SensorStat}!SensorStat@{SensorStat}}
+\doxysubsubsection{$\sim$SensorStat()}
+{\footnotesize\ttfamily Sensor\+Stat\+::$\sim$\+Sensor\+Stat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Sensor\+Stat}{p.}{class_sensor_stat} destructor destroy the ui 
+
+\doxysubsection{Member Function Documentation}
+\label{class_sensor_stat_a73dc884486ba71924ea82f36e9614f78} 
+\index{SensorStat@{SensorStat}!display\_stats@{display\_stats}}
+\index{display\_stats@{display\_stats}!SensorStat@{SensorStat}}
+\doxysubsubsection{display\_stats()}
+{\footnotesize\ttfamily Sensor\+Stat\+::display\+\_\+stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Display all the sensor statistics \label{class_sensor_stat_a75f7fec08eadd09d33c35b412bb0ee02} 
+\index{SensorStat@{SensorStat}!get\_avg@{get\_avg}}
+\index{get\_avg@{get\_avg}!SensorStat@{SensorStat}}
+\doxysubsubsection{get\_avg()}
+{\footnotesize\ttfamily float Sensor\+Stat\+::get\+\_\+avg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+get the average sensor value
+
+\begin{DoxyReturn}{Returns}
+f32\+\_\+avg the sensor average value 
+\end{DoxyReturn}
+\label{class_sensor_stat_acc41f530caeaf1c242d9ecd9e0ccc295} 
+\index{SensorStat@{SensorStat}!get\_max@{get\_max}}
+\index{get\_max@{get\_max}!SensorStat@{SensorStat}}
+\doxysubsubsection{get\_max()}
+{\footnotesize\ttfamily float Sensor\+Stat\+::get\+\_\+max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+get the maximum sensor value
+
+\begin{DoxyReturn}{Returns}
+f32\+\_\+max the sensor average value 
+\end{DoxyReturn}
+\label{class_sensor_stat_afd2e8c7f8bbbeef853dafbea906abb55} 
+\index{SensorStat@{SensorStat}!get\_min@{get\_min}}
+\index{get\_min@{get\_min}!SensorStat@{SensorStat}}
+\doxysubsubsection{get\_min()}
+{\footnotesize\ttfamily float Sensor\+Stat\+::get\+\_\+min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+get the minimum sensor value
+
+\begin{DoxyReturn}{Returns}
+f32\+\_\+min the sensor average value 
+\end{DoxyReturn}
+\label{class_sensor_stat_a16101402ce23f4e2256f4c9d1a7a49d2} 
+\index{SensorStat@{SensorStat}!new\_val@{new\_val}}
+\index{new\_val@{new\_val}!SensorStat@{SensorStat}}
+\doxysubsubsection{new\_val()}
+{\footnotesize\ttfamily void Sensor\+Stat\+::new\+\_\+val (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})}
+
+
+
+set the current sensor value 
+
+All statistics are computed in this method
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & f32\+\_\+val \+: current value \\
+\hline
+\end{DoxyParams}
+\label{class_sensor_stat_a35996228a8680c2d687843b1cee7beb5} 
+\index{SensorStat@{SensorStat}!set\_avg@{set\_avg}}
+\index{set\_avg@{set\_avg}!SensorStat@{SensorStat}}
+\doxysubsubsection{set\_avg()}
+{\footnotesize\ttfamily Sensor\+Stat\+::set\+\_\+avg (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+set the f32\+\_\+avg value from f32\+\_\+sum and u32\+\_\+cpt \label{class_sensor_stat_abceeddcf88e188ed8f1d4d997d229777} 
+\index{SensorStat@{SensorStat}!set\_max@{set\_max}}
+\index{set\_max@{set\_max}!SensorStat@{SensorStat}}
+\doxysubsubsection{set\_max()}
+{\footnotesize\ttfamily Sensor\+Stat\+::set\+\_\+max (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+set the f32\+\_\+max value from the current sensor value and f32\+\_\+max value 
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+val} & current sensor value \\
+\hline
+\end{DoxyParams}
+\label{class_sensor_stat_a3597fe87bb968d4cc3c0489e56cbc889} 
+\index{SensorStat@{SensorStat}!set\_min@{set\_min}}
+\index{set\_min@{set\_min}!SensorStat@{SensorStat}}
+\doxysubsubsection{set\_min()}
+{\footnotesize\ttfamily Sensor\+Stat\+::set\+\_\+min (\begin{DoxyParamCaption}\item[{float}]{f32\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+set the f32\+\_\+min value from the current sensor value and f32\+\_\+min value 
+\begin{DoxyParams}{Parameters}
+{\em f32\+\_\+val} & current sensor value \\
+\hline
+\end{DoxyParams}
+\label{class_sensor_stat_a18224c4118ccb49c6226c40b464bdcb9} 
+\index{SensorStat@{SensorStat}!set\_title@{set\_title}}
+\index{set\_title@{set\_title}!SensorStat@{SensorStat}}
+\doxysubsubsection{set\_title()}
+{\footnotesize\ttfamily void Sensor\+Stat\+::set\+\_\+title (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+set the title of the widget 
+
+\doxysubsection{Member Data Documentation}
+\label{class_sensor_stat_a63feab18a0883c36d67df5548a4877ab} 
+\index{SensorStat@{SensorStat}!u32\_cpt@{u32\_cpt}}
+\index{u32\_cpt@{u32\_cpt}!SensorStat@{SensorStat}}
+\doxysubsubsection{u32\_cpt}
+{\footnotesize\ttfamily uint32\+\_\+t Sensor\+Stat\+::u32\+\_\+cpt \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Brief private counter value for average value. 
+
+$<$ Macro to manage signals and slots 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sensorstat.\+h\item 
+\textbf{ sensorstat.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+\doxysection{Main\+Window Class Reference}
+\label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+A \doxyref{Main\+Window}{p.}{class_main_window} class to display sensors statistics.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Main\+Window} (QWidget $\ast$parent=nullptr)
+\item 
+\textbf{ $\sim$\+Main\+Window} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Common} \textbf{ sensors}
+\begin{DoxyCompactList}\small\item\em Brief private member which read sensors data. \end{DoxyCompactList}\item 
+\label{class_main_window_a356578805ed1248a7f2807434cb0e5ee} 
+QTimer $\ast$ {\bfseries timer}
+\begin{DoxyCompactList}\small\item\em Brief private timer to read every second sensors data. \end{DoxyCompactList}\item 
+\label{class_main_window_a35466a70ed47252a0191168126a352a5} 
+Ui\+::\+Main\+Window $\ast$ {\bfseries ui}
+\begin{DoxyCompactList}\small\item\em Brief private member to the graphic view which contains 3 $<$class$>$\doxyref{Sensor\+Stat}{p.}{class_sensor_stat}$<$/class$>$ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxyref{Main\+Window}{p.}{class_main_window} class to display sensors statistics. 
+
+Display temperature, humidity and light statistics values 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\label{class_main_window_a996c5a2b6f77944776856f08ec30858d} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+\doxyref{Main\+Window}{p.}{class_main_window} constructor.
+
+set the ui, timer and a lambda slot to display sensors stats every second init the UI titles, height, position
+
+Send a timeout signal every second
+
+Get a read access to the shmem
+
+read values from the shared memory
+
+set the current value of each widget sensor, which one display statistics\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{$\sim$MainWindow}}
+\index{````~MainWindow@{$\sim$MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{$\sim$MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Main\+Window}{p.}{class_main_window} destructor destroy the ui member 
+
+\doxysubsection{Member Data Documentation}
+\label{class_main_window_a0bdf0e65d4199297ed7c55f9879c1e64} 
+\index{MainWindow@{MainWindow}!sensors@{sensors}}
+\index{sensors@{sensors}!MainWindow@{MainWindow}}
+\doxysubsubsection{sensors}
+{\footnotesize\ttfamily \textbf{ Common} Main\+Window\+::sensors\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Brief private member which read sensors data. 
+
+$<$ Macro to manage signals and slots 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+\textbf{ mainwindow.\+cpp}\end{DoxyCompactItemize}
