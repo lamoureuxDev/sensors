@@ -1,0 +1,33 @@
+\doxysection{sensoralert.\+h}
+\label{sensoralert_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SENSORALERT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SENSORALERT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QFrame>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }SensorAlert;}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }SensorAlert\ :\ \textcolor{keyword}{public}\ QFrame}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{float}\ min\{10000\},max\{-\/10000\};}
+\DoxyCodeLine{00015\ \ \ \ \ QString\ alerte\_msg;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{explicit}\ SensorAlert(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00018\ \ \ \ \ \string~SensorAlert();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_extrems(\textcolor{keywordtype}{float}\ f32\_min,\textcolor{keywordtype}{float}\ f32\_max);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ is\_extrem(\textcolor{keywordtype}{float}\ f32\_val);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_val(\textcolor{keywordtype}{float}\ f32\_val);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_title(std::string\ name);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ Ui::SensorAlert\ *ui;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORALERT\_H}}
+
+\end{DoxyCode}

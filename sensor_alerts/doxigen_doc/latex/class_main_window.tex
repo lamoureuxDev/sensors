@@ -1,0 +1,105 @@
+\doxysection{Main\+Window Class Reference}
+\label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+A \doxyref{Main\+Window}{p.}{class_main_window} class to statistics sensors data.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Main\+Window} (QWidget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \doxyref{Main\+Window}{p.}{class_main_window} -\/ define a window with 3 sensors alerts. Updated values every second by default , if the current value read from the shared memory is out of normal range value, an alert is displayed in the UI. \end{DoxyCompactList}\item 
+\textbf{ $\sim$\+Main\+Window} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Common} \textbf{ sensors}
+\item 
+QTimer $\ast$ \textbf{ timer}
+\item 
+Ui\+::\+Main\+Window $\ast$ \textbf{ ui}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxyref{Main\+Window}{p.}{class_main_window} class to statistics sensors data. 
+
+Display temperature, humidity and light statistics value 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\label{class_main_window_a996c5a2b6f77944776856f08ec30858d} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Main\+Window}{p.}{class_main_window} -\/ define a window with 3 sensors alerts. Updated values every second by default , if the current value read from the shared memory is out of normal range value, an alert is displayed in the UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+Send a timeout signal every second by default
+
+\begin{DoxyRefDesc}{Todo}
+\item[\textbf{ Todo}]use the internal sensor.\+read\+\_\+conf(), to get the range value Temperature sensor alert init ( range value, title) \end{DoxyRefDesc}
+
+
+Humidity sensor alert init ( range value, title)
+
+light sensor alert init ( range value, title)
+
+\begin{DoxyRefDesc}{Todo}
+\item[\textbf{ Todo}]Use the sensors settings to know how many sensors are available and use an array of sensors with get\+\_\+value() methode to be momre generic \end{DoxyRefDesc}
+
+
+read sensor data from the shared memory
+
+Send sensors data to each \doxyref{Sensor\+Alert}{p.}{class_sensor_alert} object, to display alerts, regarding normal range value\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{$\sim$MainWindow}}
+\index{````~MainWindow@{$\sim$MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{$\sim$MainWindow()}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Main\+Window}{p.}{class_main_window} destructor destroy the ui member 
+
+\doxysubsection{Member Data Documentation}
+\label{class_main_window_a0bdf0e65d4199297ed7c55f9879c1e64} 
+\index{MainWindow@{MainWindow}!sensors@{sensors}}
+\index{sensors@{sensors}!MainWindow@{MainWindow}}
+\doxysubsubsection{sensors}
+{\footnotesize\ttfamily \textbf{ Common} Main\+Window\+::sensors\hspace{0.3cm}{\ttfamily [private]}}
+
+sensors \+: should be in a lib, set of Setters/\+Getters to the shared memory \label{class_main_window_a356578805ed1248a7f2807434cb0e5ee} 
+\index{MainWindow@{MainWindow}!timer@{timer}}
+\index{timer@{timer}!MainWindow@{MainWindow}}
+\doxysubsubsection{timer}
+{\footnotesize\ttfamily QTimer$\ast$ Main\+Window\+::timer\hspace{0.3cm}{\ttfamily [private]}}
+
+timer to access every second to the shared memory \label{class_main_window_a35466a70ed47252a0191168126a352a5} 
+\index{MainWindow@{MainWindow}!ui@{ui}}
+\index{ui@{ui}!MainWindow@{MainWindow}}
+\doxysubsubsection{ui}
+{\footnotesize\ttfamily Ui\+::\+Main\+Window$\ast$ Main\+Window\+::ui\hspace{0.3cm}{\ttfamily [private]}}
+
+Graphic user interface 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ mainwindow.\+h}\item 
+\textbf{ mainwindow.\+cpp}\end{DoxyCompactItemize}

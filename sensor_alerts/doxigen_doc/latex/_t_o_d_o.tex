@@ -1,0 +1,35 @@
+\chapter{TODO}
+\label{_t_o_d_o}\index{TODO@{TODO}}
+
+\begin{DoxyItemize}
+\item Ameliorations
+\item Security
+\end{DoxyItemize}\doxysection{Description}\label{index_sec}
+This program could use configuration files to manage some settings like\+:
+\begin{DoxyItemize}
+\item timeout frequency
+\item sensors type
+\item sensors name
+\item sensors value
+\item sensors use range
+\item number of sensors
+\item shared memory path
+
+A Json file could be appropriate for this kind of configuration file.
+
+Arguments management could be used, for some running options\+:
+\item file loggin option \+: --log "{}/path/to/log"{}
+\item console print enable \+: --verbose
+\item GUI disable option \+: -\/no-\/gui
+\item display version \+: -\/v --version
+\item display options and configuration file manual \+: -\/h --help
+\end{DoxyItemize}
+
+The QTimer could be integrated in the \doxyref{Common}{p.}{class_common} class, instead of creation one in each sensor manager class\doxysection{Security}\label{_t_o_d_o_Security}
+The shared memory path if passed via configuration file, should be secured\+:
+\begin{DoxyItemize}
+\item to prevent the use of the root folder \textquotesingle{}/\textquotesingle{}
+\item checking for path transversal injection (e.\+g /dev/shm/../../bin/sh)
+\end{DoxyItemize}
+
+The access of data should be controled, to avoid undefined behavior. To do so, semaphores or mutex (sem\+\_\+t) can be added to the sensor structure, stored in the shared memory. Before accessing to sensor data, we should use a sem\+\_\+wait(),waiting for the semaphore to be released. Then, use a sem\+\_\+post() once it is not modified. 
